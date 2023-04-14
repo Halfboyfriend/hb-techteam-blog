@@ -93,17 +93,6 @@ def load_user(user_id):
 
 @app.route('/')
 def get_all_posts():
-    new_post = BlogPost(
-            title="Demo Post",
-            subtitle="WEelcome Heroku",
-            body="Hello World",
-            img_url="https://res.cloudinary.com/dxqgshzri/image/upload/v1670569130/IMG_1485_-_Copy_gonedt.png",
-            author='demo',
-            date=date.today().strftime("%B %d, %Y")
-        )
-    db.session.add(new_post)
-    db.session.commit()
-
     posts = BlogPost.query.all()
     return render_template("index.html", all_posts=posts, current_user=current_user)
 
